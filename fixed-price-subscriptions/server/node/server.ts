@@ -1,10 +1,13 @@
+import { Express } from "express";
+import Stripe from "stripe";
+
 const express = require('express');
-const app = express();
+const app: Express = express();
 const { resolve } = require('path');
 const bodyParser = require('body-parser');
 // Replace if using a different env file or config
 require('dotenv').config({ path: './.env' });
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe: Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 app.use(express.static(process.env.STATIC_DIR));
 // Use JSON parser for all non-webhook routes.
